@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DonutService, DonutInfo } from '../donut.service';
+import { CartService } from '../cart.service';
 
 @Component({
   selector: 'app-display-donut',
@@ -9,16 +10,16 @@ import { DonutService, DonutInfo } from '../donut.service';
 })
 export class DisplayDonutComponent implements OnInit {
 
-  constructor(private _Activatedroute: ActivatedRoute, private thisDonutService: DonutService) { }
+  constructor(private _Activatedroute: ActivatedRoute, private thisDonutService: DonutService, private thisCartService: CartService) { }
 
   public donutDetails = new DonutDetails();
 
   public id: number = 0;
+
   ngOnInit(): void {
     let id_string: string | null = "";
     id_string = this._Activatedroute.snapshot.paramMap.get("id");
     this.id = Number.parseInt(id_string!);
-
     this.displayDetails();
   }
 
@@ -33,6 +34,14 @@ export class DisplayDonutComponent implements OnInit {
       this.isDetailsAvailable = true;
       this.thisDonutService.GetDetailsFromServer(this.id);
     }
+  }
+  public BuyDonut(donutId: number) {
+    console.log("BuyDonut() - donutId=" + donutId);
+    this.thisCartService.addToCart(this.donutDetails);
+  }
+  public RemoveDonut(donutId: number) {
+    console.log("RemoveDonut() - donutId" + donutId);
+    this.thisCartService.removeFromCart(donutId);
   }
 }
 

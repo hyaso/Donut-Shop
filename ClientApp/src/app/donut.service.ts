@@ -8,8 +8,10 @@ import { DonutDetails } from './display-donut/display-donut.component';
 export class DonutService {
 
   constructor(private httpClient: HttpClient) { }
+
   @Output() newDonutsAvailableEvent = new EventEmitter<listOfDonuts>();
   @Output() newDetailsAvailableEvent = new EventEmitter<DonutDetails>();
+
   private storedDonutInfo: listOfDonuts | null = null;
   private storedDonutDetails: DonutDetails | null = null;
 

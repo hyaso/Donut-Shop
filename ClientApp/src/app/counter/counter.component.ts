@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { HttpClientModule } from "@angular/common/http";
-import { DonutService, listOfDonuts, DonutInfo } from '../donut.service'
+import { DonutService, listOfDonuts, DonutInfo } from '../donut.service';
 
 @Component({
   selector: 'app-counter-component',
@@ -16,7 +16,7 @@ export class CounterComponent {
   public loadedDonuts: DonutInfo[] = [];
 
   constructor(private thisDonutService: DonutService) {
-
+    this.listDonuts();
   }
 
   private isNewDonutsAvailableEventSubscribed: boolean = false;

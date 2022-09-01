@@ -1,3 +1,9 @@
-<body *ngFor="let currDonut of donutDetails">
-  <p>{{currDonut.name}}</p>
-</body>
+<p><strong>Name: </strong>{{donutDetails.name}}</p>
+<p><strong>Calories: </strong>{{donutDetails.calories}}</p>
+<p><strong>Extras: </strong>{{donutDetails.extras}}</p>
+<img src="{{donutDetails.photo}}" width="100">
+<br />
+<a href="{{donutDetails.photo_attribution}}">{{donutDetails.photo_attribution}}</a>
+<br />
+<br />
+<button class="btn btn-primary" (click)="BuyDonut(donutDetails.id)">Add to cart</button>
